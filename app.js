@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
     res.send("Hello from social networkingz server!");
 });
 
-app.use("/api/v1", require("./routes/user_routes"));
-app.use("/api/v1", require("./routes/room_routes"));
+app.use("/v1", require("./routes/user_routes"));
+app.use("/v1", require("./routes/room_routes"));
 
 const port = process.env.PORT;
 
