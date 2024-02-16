@@ -83,3 +83,26 @@ exports.getPaginatedUsers = async (req, res) => {
     }
 }
 
+exports.deleteUser = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            where: {
+                email: req.params.id
+            }
+        });
+
+        await user.destroy();
+
+        res.status(200).json({
+            success: true,
+            message: "User deleted"
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+}
+
